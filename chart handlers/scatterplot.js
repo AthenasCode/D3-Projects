@@ -71,16 +71,10 @@ getData(
     .attr("r", 5)
     .attr("fill", (d) => (d.Doping ? "rgb(31, 119, 180)" : "rgb(255, 127, 14)"))
     .on("mouseover", (event, data) => {
-      console.log("positioning tooltip");
-      // get scatterplot position
-      // const scatterplotPosition = document
-      //   .getElementById("scatterplot-svg")
-      //   .getBoundingClientRect();
-      // display tooltip on mouseover
       tooltip
         .style("opacity", 0.9)
         .style("left", () => {
-          return event.clientX + "px";
+          return event.clientX + window.scrollX + "px";
         })
         .style("top", () => {
           return event.clientY + window.scrollY + "px";

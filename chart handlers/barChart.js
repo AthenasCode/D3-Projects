@@ -70,7 +70,7 @@ getData(
         // display tooltip
         tooltip
           .style("opacity", 0.9)
-          .style("left", event.clientX + "px")
+          .style("left", event.clientX + window.scrollX + "px")
           .style("top", event.clientY + window.scrollY + "px")
           .html(() => {
             // Parse the date string
