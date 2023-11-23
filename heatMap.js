@@ -2,8 +2,8 @@ import * as d3 from "https://unpkg.com/d3?module";
 import getData from "./fetchData.js";
 
 // Define width and height of chart
-export const w = 1400;
-export const h = 500;
+export const w = 900;
+export const h = 440;
 export const padding = 60;
 
 getData(
@@ -12,7 +12,6 @@ getData(
   // Store dataset from JSON in dataset variable (not necessary but for ease of understanding)
   const dataset = json.monthlyVariance;
   const baseTemp = json.baseTemperature;
-  console.log("Dataset:", dataset);
 
   // Define x and y scales
   const xScale = d3
@@ -35,15 +34,15 @@ getData(
       "October",
       "November",
       "December",
-    ]) // Jan -> Dec represented as numbers 0 - 12
+    ]) // Jan -> Dec represented as numbers 0 -> 12
     .range([padding, h - padding]);
 
   // Determine bandheight
   const bandHeight = yScale.bandwidth();
 
-  // Append svg to #scatterplot
+  // Append svg to #heat-map
   const svg = d3
-    .select("#scatterplot")
+    .select("#heat-map")
     .append("svg")
     .attr("id", "heatmap")
     .attr("width", w)
@@ -51,9 +50,9 @@ getData(
 
   // Create tooltip that has opacity 0 by default, and will display during a mouseover event (see below)
   const tooltip = d3
-    .select("#scatterplot")
+    .select("#heat-map")
     .append("div")
-    .attr("class", "tooltip")
+    .attr("class", "heatMapTooltip")
     .style("opacity", 0);
 
   // Define monthList to use to convert month numbers to strings
@@ -83,7 +82,6 @@ getData(
       return ((w - padding) / ((dataset.length - 1) / 12)).toFixed(0);
     })
     .attr("height", () => {
-      // return Math.trunc((h - padding) / 13) - 1;
       return bandHeight;
     })
     .attr("x", (d) => {

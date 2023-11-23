@@ -1,20 +1,19 @@
 import * as d3 from "https://unpkg.com/d3?module";
 import { w, h, padding } from "./heatMap.js";
 
-// Append legend
-
 // Define dimensions of SVG
-const legendWidth = 400;
-const legendHeight = 100;
-const legendPadding = 40;
+const legendWidth = 300;
+const legendHeight = 70;
+const legendPadding = 20;
 
 const legendSvg = d3
-  .select("#scatterplot")
+  .select("#heat-map")
   .append("svg")
   .attr("id", "legend")
   .style("position", "absolute")
-  .style("top", "0")
-  .attr("transform", `translate(${padding}, ${h + padding})`)
+  .style("bottom", "0")
+  .style("left", "0")
+  .attr("transform", "translate(20, 20)")
   .attr("width", legendWidth)
   .attr("height", legendHeight);
 

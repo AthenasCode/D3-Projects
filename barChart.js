@@ -41,7 +41,7 @@ getData(
     const tooltip = d3
       .select("#bar-chart")
       .append("div")
-      .attr("class", "tooltip")
+      .attr("class", "barChartTooltip")
       .style("opacity", 0);
 
     // Append SVG to #bar-chart
