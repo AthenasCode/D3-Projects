@@ -168,7 +168,7 @@ getData(
     .attr("y", 15)
     .text("Month")
     .attr("transform", "rotate(-90)")
-    .style("font", "14px sans-serif");
+    .style("font-size", "14px");
 
   // Append x label
   svg
@@ -176,5 +176,5 @@ getData(
     .attr("x", w / 2)
     .attr("y", h)
     .text("Year")
-    .style("font", "14px sans-serif");
+    .style("font-size", "14px");
 });

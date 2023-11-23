@@ -82,13 +82,10 @@ getData(
             return year + " " + quarter + "<br>" + " $" + data[1] + " Billion";
           });
       })
-      .on("mouseout", (d) => {
+      .on("mouseout", () => {
         // hide tooltip
         tooltip.style("opacity", 0);
       });
-
-    // title") // Display data as text tooltip
-    // .text(;
 
     // Define X and Y axis
     const xAxis = d3.axisBottom(xScale);
