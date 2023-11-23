@@ -1,22 +1,10 @@
-import * as d3 from "https://unpkg.com/d3?module";
-
-// Retrieve JSON from URL
-async function getData() {
-  try {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json"
-    );
-    const json = await response.json();
-    console.log(json);
-    return json;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-}
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import getData from "./fetchData.js";
 
 // Use data to create graph with d3
-getData()
+getData(
+  "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json"
+)
   .then((json) => {
     // Store dataset from JSON in variable
     const dataset = json.data;
