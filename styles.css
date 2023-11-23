@@ -6,8 +6,13 @@ body {
   background-color: #708090;
   padding: 2rem;
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  max-width: 1900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: 1900px) {
+    grid-template-columns: 1fr;
+  }
+  place-items: center;
   gap: 2rem;
 }
 
@@ -18,10 +23,6 @@ body {
 
 .bar:hover {
   fill: white;
-}
-
-#bar-chart {
-  position: relative;
 }
 
 .container {
@@ -93,8 +94,4 @@ body {
   border: 0px;
   border-radius: 8px;
   pointer-events: none;
-}
-
-#heat-map {
-  position: relative;
 }

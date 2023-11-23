@@ -125,25 +125,31 @@ getData(
       .attr("class", "legend-label")
       .attr("transform", `translate(0, ${translateY})`);
 
+    // legend coloured square
     legendLabel
       .append("rect")
-      .attr("x", "822px")
+      .attr("x", () => {
+        return w - padding - 20;
+      })
       .attr("width", "18px")
       .attr("height", "18px")
       .attr("fill", fillColor);
 
+    // legend text
     legendLabel
       .append("text")
-      .attr("x", "816px")
+      .attr("x", () => {
+        return w - padding - 25;
+      })
       .attr("y", "9px")
       .attr("dy", ".35em")
       .attr("text-anchor", "end")
       .text(labelText);
   }
 
-  // Create doping legend label
+  // Create "doping" legend label
   createLegendLabel("Doping allegations", "rgb(31, 119, 180)", 230);
 
-  // Create no doping legend label
+  // Create "no doping" legend label
   createLegendLabel("No doping allegations", "rgb(255, 127, 14)", 250);
 });
