@@ -6,8 +6,6 @@ getData(
 ).then((json) => {
   // Store dataset from JSON in dataset variable (not necessary but for ease of understanding)
   const dataset = json;
-  console.log("Dataset:", dataset);
-
   // Define width and height of chart
   const w = 900;
   const h = 440;
@@ -45,6 +43,7 @@ getData(
   const svg = d3
     .select("#scatterplot")
     .append("svg")
+    .attr("id", "scatterplot-svg")
     .attr("width", w)
     .attr("height", h);
 
@@ -62,19 +61,30 @@ getData(
     .enter()
     .append("circle")
     .attr("cx", (d) => {
+      d.scaledX = xScale(d.Year); // Store the scaled x-coordinate in the data object
       return xScale(d.Year);
     })
     .attr("cy", (d) => {
+      d.scaledY = yScale(d3.utcParse(timeSpecifier)(d.Time));
       return yScale(d3.utcParse(timeSpecifier)(d.Time)); // We don't need to subtract the value from the height of the graph because we are displaying the fastest times at the top (the yAxis is reversed)
     })
     .attr("r", 5)
     .attr("fill", (d) => (d.Doping ? "rgb(31, 119, 180)" : "rgb(255, 127, 14)"))
     .on("mouseover", (event, data) => {
+      console.log("positioning tooltip");
+      // get scatterplot position
+      // const scatterplotPosition = document
+      //   .getElementById("scatterplot-svg")
+      //   .getBoundingClientRect();
       // display tooltip on mouseover
       tooltip
         .style("opacity", 0.9)
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY + "px")
+        .style("left", () => {
+          return event.clientX + "px";
+        })
+        .style("top", () => {
+          return event.clientY + window.scrollY + "px";
+        })
         .html(() => {
           const name = data.Name;
           const country = data.Nationality;

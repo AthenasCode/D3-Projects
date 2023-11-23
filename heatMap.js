@@ -1,4 +1,4 @@
-import * as d3 from "https://unpkg.com/d3?module";
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import getData from "./fetchData.js";
 
 // Define width and height of chart
@@ -123,8 +123,8 @@ getData(
       // display tooltip
       tooltip
         .style("opacity", 0.9)
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY + "px")
+        .style("left", event.clientX + "px")
+        .style("top", event.clientY + window.scrollY + "px")
         .html(() => {
           const monthNumber = data.month;
           let month;

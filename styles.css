@@ -44,17 +44,12 @@ body {
   font-size: 2em;
 }
 
-#bar-chart {
-  position: relative;
-}
-
 .barChartTooltip {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   text-align: center;
-  top: 350px;
   transform: translateX(20px);
   width: 150px;
   height: 50px;
@@ -67,15 +62,11 @@ body {
   pointer-events: none;
 }
 
-#heat-map {
-  position: relative;
-}
-
 .heatMapTooltip {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: absolute;
   text-align: center;
   transform: translate(-50px, -90px);
   width: 110px;
@@ -88,6 +79,12 @@ body {
   box-shadow: 1px 1px 10px;
   border-radius: 5px;
   pointer-events: none;
+}
+
+#heat-map-legend {
+  position: relative;
+  top: -50px;
+  left: 40px;
 }
 
 .scatterplotTooltip {

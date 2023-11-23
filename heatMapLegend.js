@@ -1,4 +1,4 @@
-import * as d3 from "https://unpkg.com/d3?module";
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { w, h, padding } from "./heatMap.js";
 
 // Define dimensions of SVG
@@ -7,13 +7,9 @@ const legendHeight = 70;
 const legendPadding = 20;
 
 const legendSvg = d3
-  .select("#heat-map")
+  .select("#heat-map-legend")
   .append("svg")
   .attr("id", "legend")
-  .style("position", "absolute")
-  .style("bottom", "0")
-  .style("left", "0")
-  .attr("transform", "translate(20, 20)")
   .attr("width", legendWidth)
   .attr("height", legendHeight);
 

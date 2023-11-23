@@ -70,9 +70,9 @@ getData(
         // display tooltip
         tooltip
           .style("opacity", 0.9)
-          .style("left", event.offsetX + "px")
+          .style("left", event.clientX + "px")
+          .style("top", event.clientY + window.scrollY + "px")
           .html(() => {
-            console.log(data);
             // Parse the date string
             let date = new Date(data[0]);
             // Calculate the quarter
