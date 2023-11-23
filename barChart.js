@@ -20,7 +20,6 @@ getData()
   .then((json) => {
     // Store dataset from JSON in variable
     const dataset = json.data;
-    console.log("dataset", dataset);
 
     // Define width and height of chart
     const w = 900;
